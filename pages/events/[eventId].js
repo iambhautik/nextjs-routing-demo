@@ -1,5 +1,8 @@
+import EventContent from '@/components/event-detail/event-content.js'
+import EventLogistics from '@/components/event-detail/event-logistics.js'
+import EventSummary from '@/components/event-detail/event-summary.js'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { getEventById } from '../../dummy-data.js'
 
@@ -14,9 +17,13 @@ const EventDetailPage = () => {
   }
 
   return (
-    <div>
-      <h1>Event details page</h1>
-    </div>
+    <Fragment>
+      <EventSummary title={singleEventById.title} />
+      <EventLogistics date={singleEventById.date} address={singleEventById.location} image={singleEventById.image} imageAlt={singleEventById.title} />
+      <EventContent>
+        <p>{singleEventById.description}</p>
+      </EventContent>
+    </Fragment>
   )
 }
 
